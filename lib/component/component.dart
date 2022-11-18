@@ -14,10 +14,13 @@ class DefaultElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors. black),
+        ),
         onPressed: onPressed,
         child: Text(
           title,
-          style: Theme.of(context).textTheme.button,
+          style: Theme.of(context).textTheme.button!.copyWith(color: Colors.white),
         ),
       ),
     );
