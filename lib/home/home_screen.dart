@@ -369,9 +369,7 @@ class HomeScreen extends StatelessWidget {
           child: BlocBuilder<LogicCubit, LogicState>(
             builder: (context, state) {
               var cubit = context.read<LogicCubit>();
-              return (cubit.resultTimeClintWillTake != null &&
-                      cubit.resultNumOfClients != null)
-                  ? Column(
+              return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (cubit.resultNumOfClients != null)
@@ -389,8 +387,7 @@ class HomeScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                       ],
-                    )
-                  : Container();
+                    );
             },
           ),
         ),
