@@ -52,7 +52,7 @@ class DefaultTextForm extends StatelessWidget {
       decoration: InputDecoration(
         label: Text(
           label,
-          style: Theme.of(context).textTheme.caption,
+          style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
         ),
         contentPadding: const EdgeInsets.all(10),
         errorText: '',
@@ -86,7 +86,7 @@ class DefaultHeadLine extends StatelessWidget {
             text,
             textAlign: TextAlign.start,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
           ),
