@@ -54,9 +54,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: DefaultTextForm(
-                           onChange: (v){
-                      
-                    },
+                          onChange: (v) {},
                           validator: (value) {
                             for (int i = 0; i < value!.length; i++) {
                               if (value[i] != '0' &&
@@ -86,9 +84,7 @@ class HomeScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: DefaultTextForm(
-                             onChange: (v){
-                      
-                    },
+                            onChange: (v) {},
                             validator: (value) {
                               for (int i = 0; i < value!.length; i++) {
                                 if (value[i] != '0' &&
@@ -118,9 +114,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: DefaultTextForm(
-                           onChange: (v){
-                      
-                    },
+                          onChange: (v) {},
                           validator: (value) {
                             for (int i = 0; i < value!.length; i++) {
                               if (value[i] != '0' &&
@@ -154,36 +148,37 @@ class HomeScreen extends StatelessWidget {
                   BlocBuilder<LogicCubit, LogicState>(
                     builder: (context, state) {
                       var cubit = context.read<LogicCubit>();
-                      return  DefaultTextForm(
-                     onChange: (v){
-                      cubit.changeN(v);
+                      return DefaultTextForm(
+                        onChange: (v) {
+                          cubit.changeN(v);
+                        },
+                        validator: (value) {
+                          for (int i = 0; i < value!.length; i++) {
+                            if (value[i] != '0' &&
+                                value[i] != '1' &&
+                                value[i] != '2' &&
+                                value[i] != '3' &&
+                                value[i] != '4' &&
+                                value[i] != '5' &&
+                                value[i] != '6' &&
+                                value[i] != '7' &&
+                                value[i] != '8' &&
+                                value[i] != '9' &&
+                                value[i] != '.') return 'it must be valid';
+                          }
+                          if (value.isEmpty) return 'it required';
+                          return null;
+                        },
+                        textEditingController: numberOfClientsController,
+                        suffix: Text(
+                          't  ',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        label:
+                            'Number of clients in the system at specific time',
+                      );
                     },
-                    validator: (value) {
-                      for (int i = 0; i < value!.length; i++) {
-                        if (value[i] != '0' &&
-                            value[i] != '1' &&
-                            value[i] != '2' &&
-                            value[i] != '3' &&
-                            value[i] != '4' &&
-                            value[i] != '5' &&
-                            value[i] != '6' &&
-                            value[i] != '7' &&
-                            value[i] != '8' &&
-                            value[i] != '9' &&
-                            value[i] != '.') return 'it must be valid';
-                      }
-                      if (value.isEmpty) return 'it required';
-                      return null;
-                    },
-                    textEditingController: numberOfClientsController,
-                    suffix: Text(
-                      't  ',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    label: 'Number of clients in the system at specific time',
-                  );
-  },
-),
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -212,36 +207,35 @@ class HomeScreen extends StatelessWidget {
                     builder: (context, state) {
                       var cubit = context.read<LogicCubit>();
                       return DefaultTextForm(
-                     onChange: (v){
-                      cubit.changeW(v);
+                        onChange: (v) {
+                          cubit.changeW(v);
+                        },
+                        validator: (value) {
+                          for (int i = 0; i < value!.length; i++) {
+                            if (value[i] != '0' &&
+                                value[i] != '1' &&
+                                value[i] != '2' &&
+                                value[i] != '3' &&
+                                value[i] != '4' &&
+                                value[i] != '5' &&
+                                value[i] != '6' &&
+                                value[i] != '7' &&
+                                value[i] != '8' &&
+                                value[i] != '9') {
+                              return 'it must be integer';
+                            }
+                          }
+                          return null;
+                        },
+                        textEditingController: timeWaitingController,
+                        suffix: Text(
+                          'n  ',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        label: 'Time waiting for a client',
+                      );
                     },
-                   
-                    validator: (value) {
-                      for (int i = 0; i < value!.length; i++) {
-                        if (value[i] != '0' &&
-                            value[i] != '1' &&
-                            value[i] != '2' &&
-                            value[i] != '3' &&
-                            value[i] != '4' &&
-                            value[i] != '5' &&
-                            value[i] != '6' &&
-                            value[i] != '7' &&
-                            value[i] != '8' &&
-                            value[i] != '9') {
-                          return 'it must be integer';
-                        }
-                      }
-                      return null;
-                    },
-                    textEditingController: timeWaitingController,
-                    suffix: Text(
-                      'n  ',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    label: 'Time waiting for a client',
-                  );
-  },
-),
+                  ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -370,24 +364,24 @@ class HomeScreen extends StatelessWidget {
             builder: (context, state) {
               var cubit = context.read<LogicCubit>();
               return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (cubit.resultNumOfClients != null)
-                          Text(
-                            'n(${cubit.calcTime ?? 't'})  = ${cubit.resultNumOfClients}',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        if (cubit.resultNumOfClients != null)
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        if (cubit.resultTimeClintWillTake != null)
-                          Text(
-                            'Wq(${cubit.calcNumber ?? 'n'}) = ${cubit.resultTimeClintWillTake}',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                      ],
-                    );
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (cubit.resultNumOfClients != null)
+                    Text(
+                      'n(${cubit.calcTime ?? 't'})  = ${cubit.resultNumOfClients}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  if (cubit.resultNumOfClients != null)
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  if (cubit.resultTimeClintWillTake != null)
+                    Text(
+                      'Wq(${cubit.calcNumber ?? 'n'}) = ${cubit.resultTimeClintWillTake}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                ],
+              );
             },
           ),
         ),
