@@ -52,7 +52,7 @@ class DefaultTextForm extends StatelessWidget {
       decoration: InputDecoration(
         label: Text(
           label,
-          style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.caption,
         ),
         contentPadding: const EdgeInsets.all(10),
         errorText: '',

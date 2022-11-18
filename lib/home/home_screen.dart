@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
     var formKey = GlobalKey<FormState>();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white24,
+        backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         body: SingleChildScrollView(
           child: Form(
@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     textEditingController: capacityTimeController,
                     suffix: Text(
                       'K-1',
-                      style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
+                      style: Theme.of(context).textTheme.caption,
                     ),
                     label: 'Capacity',
                   ),
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                           textEditingController: arrivalTimeController,
                           suffix: Text(
                             '1/λ',
-                            style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
+                            style: Theme.of(context).textTheme.caption,
                           ),
                           label: 'Arrival time ',
                         ),
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                           textEditingController: serviceTimeController,
                           suffix: Text(
                             '1/µ',
-                            style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
+                            style: Theme.of(context).textTheme.caption,
                           ),
                           label: 'Service time ',
                         ),
