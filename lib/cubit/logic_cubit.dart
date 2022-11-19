@@ -52,11 +52,17 @@ class LogicCubit extends Cubit<LogicState> {
     if (dTime < dArrivalTime) {
       resultNumOfClients = '0';
     } else if (dTime >= dArrivalTime && dTime < finalTiResult) {
-      resultNumOfClients = (((arrivalRate * dTime).toInt()) -
-              ((serviceRate * dTime - resultRate).toInt()))
+      resultNumOfClients = (((dTime/dArrivalTime).floor()) -
+          ((dTime/dServiceTime - resultRate).floor()))
           .toString();
     } else if (dTime >= finalTiResult) {
-      resultNumOfClients = '$capacity  &  ${int.parse(capacity) - 1}';
+      if(dServiceTime % dArrivalTime == 0)
+      {
+        resultNumOfClients = '${int.parse(capacity) - 1}';
+
+      }else {
+        resultNumOfClients = '$capacity  &  ${int.parse(capacity) - 1}';
+      }
     }
 
     emit(ChangeNumOfClientsAtSystem());
@@ -107,8 +113,13 @@ class LogicCubit extends Cubit<LogicState> {
       resultTimeClintWillTake =
           ((dServiceTime - dArrivalTime) * (dNumber - 1)).toString();
     } else {
+      if(dServiceTime%dArrivalTime == 0){
+        resultTimeClintWillTake =
+        '${(dServiceTime - dArrivalTime) * (arrivalRate * finalTiResult - 3)}';
+
+      }
       resultTimeClintWillTake =
-          '${(dServiceTime - dArrivalTime) * (arrivalRate * finalTiResult - 2)}  &  ${(dServiceTime - dArrivalTime) * (arrivalRate * finalTiResult - 3)}';
+      '${(dServiceTime - dArrivalTime) * (arrivalRate * finalTiResult - 2)}  &  ${(dServiceTime - dArrivalTime) * (arrivalRate * finalTiResult - 3)}';
     }
 
     emit(ChangeTimeWitchClientAtSystemWillTake());
